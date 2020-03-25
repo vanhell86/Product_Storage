@@ -58,7 +58,6 @@
             <label for="newProductSubmit" role="button" class="btn btn-primary mr-4" tabindex="0">
                 Save
             </label>
-
         <?php endif; ?>
     </nav>
     <?php include 'info.php'; ?>

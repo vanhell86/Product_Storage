@@ -15,8 +15,8 @@ try {
         config('database.username'),
         config('database.password')
     ));
-}catch (Exception $e){
-    echo 'Connection error: '  . $e->getMessage();
+} catch (Exception $e) {
+    echo 'Connection error: ' . $e->getMessage();
 }
 
 $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $router) {
@@ -29,11 +29,6 @@ $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $rou
     $router->post('/products/add/book', $namespace . 'BooksController@store');
     $router->post('/products/add/furniture', $namespace . 'FurnituresController@store');
     $router->delete('/products/delete', $namespace . 'ProductsController@destroy');
-
-//    $router->post('/auth/login', $namespace . 'Auth\LoginController@login');
-
-
-//    $router->delete('/advertisements/delete', $namespace . 'AdvertisementsController@deleteAd');
 
 });
 
@@ -60,6 +55,12 @@ switch ($routeInfo[0]) {
         //var_dump($controller . '  ' . $method);die;
         (new $controller)->$method($vars);
         break;
+}
+if ($httpMethod == 'GET') {
+    unset($_SESSION['sku']);
+    unset($_SESSION['name']);
+    unset($_SESSION['price']);
+    unset($_SESSION['type']);
 }
 
 include_once __DIR__ . "/../app/Views/layouts/footer.php";

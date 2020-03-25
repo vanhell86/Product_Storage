@@ -8,19 +8,22 @@
                         <div class="form-group row">
                             <label class="col-md-4 col-form-label text-md-right">Sku</label>
                             <div class="col-md-6">
-                                <input type="text" class="form-control " name='sku'>
+                                <input type="text" class="form-control " name='sku'
+                                       value="<?= $_SESSION['sku'] ?? '' ?>">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-md-4 col-form-label text-md-right">Name</label>
                             <div class="col-md-6">
-                                <input type="text" class="form-control " name='name'>
+                                <input type="text" class="form-control " name='name'
+                                       value="<?= $_SESSION['name'] ?? '' ?>">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-md-4 col-form-label text-md-right">Price</label>
                             <div class="col-md-6">
-                                <input type="text" class="form-control " name='price'>
+                                <input type="text" class="form-control " name='price'
+                                       value="<?= $_SESSION['price'] ?? '' ?>">
                             </div>
                         </div>
                         <div class="form-group row extra dvd" style="display: none">
@@ -69,10 +72,11 @@
         <div class="col-md-5 ">
             <label for="typeSelect">Choose Product type</label>
             <select class="form-control " id="typeSelect" name="type">
-                <option value=0 selected="selected">Choose product type</option>
-                <option value="dvd">DVD</option>
-                <option value="book">Book</option>
-                <option value="furniture">Furniture</option>
+                <option value=0 <?php echo ($_SESSION['type'] ?? NULL)=='0'?'selected':''; ?>>Choose product type</option>
+                <option value="dvd" <?php echo (($_SESSION['type'] ?? NULL)=='dvd'?'selected':''); ?>>DVD</option>
+                <option value="book" <?php echo ($_SESSION['type'] ?? NULL)=='book'?'selected':''; ?>>Book</option>
+                <option value="furniture" <?php echo ($_SESSION['type'] ?? NULL)=='furniture'?'selected':''; ?>>Furniture
+                </option>
             </select>
         </div>
         <input type="submit" name="save" id="newProductSubmit" style="display: none;">

@@ -4,18 +4,41 @@
 namespace App\Controllers;
 
 
+use Core\FormValidator;
+
 class DvdsController
 {
 
     public function store()
     {
-
-
         $sku = htmlspecialchars($_POST['sku']);
         $name = trim(htmlspecialchars($_POST['name']));
-        $type = $_POST['type'];
+        $type = trim(htmlspecialchars($_POST['type']));
         $size = (int)trim(htmlspecialchars($_POST['size']));
-        $price = (int)trim(htmlspecialchars($_POST['price']));
+        $price = trim(htmlspecialchars($_POST['price']));
+//        dd($size);
+
+        $_SESSION['sku'] = $sku;
+        $_SESSION['name'] = $name;
+        $_SESSION['price'] = $price;
+        $_SESSION['type'] = $type;
+
+        $validator = new FormValidator();
+        $validator->validate($_POST, [
+            'sku' => ['required', 'alphanumeric'],
+            'name' => ['required', 'alphabetical'],
+            'type' => ['required'],
+            'size' => ['required', 'numeric'],
+            'price' => ['required', 'numeric']
+
+        ]);
+
+        if ($validator->failed()) {
+            $_SESSION['msgClass'] = 'warning';
+            $_SESSION['msg'] = $validator->getErrors();
+            return redirect($_SERVER['HTTP_REFERER']);// Not the safest way of redirecting back
+//            return redirect('/products/add');
+        }
 
         $data = database()->insert('products', [
             'sku' => $sku,
@@ -26,8 +49,11 @@ class DvdsController
         ]);
         $_SESSION['msgClass'] = 'success';
         $_SESSION['msg'] = 'Product stored!';
+        unset($_SESSION['sku']);
+        unset($_SESSION['name']);
+        unset($_SESSION['price']);
+        unset($_SESSION['type']);
 
         return redirect('/products/add');
     }
-
 }

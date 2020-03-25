@@ -3,6 +3,6 @@
 return [
     'host' => 'localhost',
     'username'=>'root',
-    'password'=>'password',
+    'password'=>'liepupe',
     'database'=>'test'
 ];
