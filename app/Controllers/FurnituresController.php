@@ -22,6 +22,9 @@ class FurnituresController
         $_SESSION['name'] = $name;
         $_SESSION['price'] = $price;
         $_SESSION['type'] = $type;
+        $_SESSION['height'] = trim($height);
+        $_SESSION['width'] = trim($width);
+        $_SESSION['length'] = trim($length);
 
         $validator = new FormValidator();
         $validator->validate($_POST, [
@@ -31,7 +34,6 @@ class FurnituresController
             'width' => ['required', 'numeric'],
             'length' => ['required', 'numeric'],
             'height' => ['required', 'numeric']
-
         ]);
 
         if ($validator->failed()) {
@@ -56,6 +58,9 @@ class FurnituresController
         unset($_SESSION['name']);
         unset($_SESSION['price']);
         unset($_SESSION['type']);
+        unset($_SESSION['height']);
+        unset($_SESSION['width']);
+        unset($_SESSION['length']);
 
         return redirect('/products/add');
     }

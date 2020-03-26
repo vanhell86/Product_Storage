@@ -8,7 +8,6 @@ use Core\FormValidator;
 
 class DvdsController
 {
-
     public function store()
     {
         $sku = htmlspecialchars($_POST['sku']);
@@ -16,12 +15,12 @@ class DvdsController
         $type = trim(htmlspecialchars($_POST['type']));
         $size = (int)trim(htmlspecialchars($_POST['size']));
         $price = trim(htmlspecialchars($_POST['price']));
-//        dd($size);
 
         $_SESSION['sku'] = $sku;
         $_SESSION['name'] = $name;
         $_SESSION['price'] = $price;
         $_SESSION['type'] = $type;
+        $_SESSION['size'] = $size;
 
         $validator = new FormValidator();
         $validator->validate($_POST, [
@@ -53,6 +52,7 @@ class DvdsController
         unset($_SESSION['name']);
         unset($_SESSION['price']);
         unset($_SESSION['type']);
+        unset($_SESSION['size']);
 
         return redirect('/products/add');
     }

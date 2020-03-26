@@ -9,34 +9,36 @@
                             <label class="col-md-4 col-form-label text-md-right">Sku</label>
                             <div class="col-md-6">
                                 <input type="text" class="form-control " name='sku'
-                                       value="<?= $_SESSION['sku'] ?? '' ?>">
+                                       value="<?= $_SESSION['sku'] ?? NULL ?>">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-md-4 col-form-label text-md-right">Name</label>
                             <div class="col-md-6">
                                 <input type="text" class="form-control " name='name'
-                                       value="<?= $_SESSION['name'] ?? '' ?>">
+                                       value="<?= $_SESSION['name'] ?? NULL ?>">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-md-4 col-form-label text-md-right">Price</label>
                             <div class="col-md-6">
                                 <input type="text" class="form-control " name='price'
-                                       value="<?= $_SESSION['price'] ?? '' ?>">
+                                       value="<?= $_SESSION['price'] ?? NULL ?>">
                             </div>
                         </div>
                         <div class="form-group row extra dvd" style="display: none">
                             <label class="col-md-4 col-form-label text-md-right">Size</label>
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name='size'>
+                                <input type="text" class="form-control" name='size'
+                                value="<?= $_SESSION['size'] ?? NULL ?>">
                                 <p class="card-text">Please, enter storage capacity of a DVD in megabytes.</p>
                             </div>
                         </div>
                         <div class="form-group row extra book" style="display: none">
                             <label class="col-md-4 col-form-label text-md-right">Weight</label>
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name='weight'>
+                                <input type="text" class="form-control" name='weight'
+                                       value="<?= $_SESSION['weight'] ?? NULL ?>">
                                 <p class="card-text">Please, enter weight of a book in gramms.</p>
                             </div>
                         </div>
@@ -45,21 +47,24 @@
                             <div class="form-group row">
                                 <label class="col-md-4 col-form-label text-md-right">Height</label>
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" name='height'>
+                                    <input type="text" class="form-control" name='height'
+                                           value="<?= $_SESSION['height'] ?? NULL ?>">
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label class="col-md-4 col-form-label text-md-right">Width</label>
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" name='width'>
+                                    <input type="text" class="form-control" name='width'
+                                           value="<?= $_SESSION['width'] ?? NULL ?>">
                                 </div>
                             </div>
 
                             <div class="form-group row ">
                                 <label class="col-md-4 col-form-label text-md-right">Length</label>
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" name='length'>
+                                    <input type="text" class="form-control" name='length'
+                                           value="<?=$_SESSION['length'] ?? NULL?>">
                                     <p class="card-text">Please, enter height, width and length of a furniture in
                                         mm.</p>
                                 </div>

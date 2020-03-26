@@ -18,6 +18,7 @@ class BooksController
         $_SESSION['name'] = $name;
         $_SESSION['price'] = $price;
         $_SESSION['type'] = $type;
+        $_SESSION['weight'] = $weight;
 
         $validator = new FormValidator();
         $validator->validate($_POST, [
@@ -48,6 +49,7 @@ class BooksController
         unset($_SESSION['name']);
         unset($_SESSION['price']);
         unset($_SESSION['type']);
+        unset($_SESSION['weight']);
 
         return redirect('/products/add');
     }

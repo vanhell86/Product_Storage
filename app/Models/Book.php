@@ -33,6 +33,6 @@ class Book extends Product
 
     public function getWeight()
     {
-        return $this->weight/1000;
+        return $this->weight / 1000;
     }
 }

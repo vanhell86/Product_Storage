@@ -61,6 +61,11 @@ if ($httpMethod == 'GET') {
     unset($_SESSION['name']);
     unset($_SESSION['price']);
     unset($_SESSION['type']);
+    unset($_SESSION['size']);
+    unset($_SESSION['weight']);
+    unset($_SESSION['height']);
+    unset($_SESSION['width']);
+    unset($_SESSION['length']);
 }
 
 include_once __DIR__ . "/../app/Views/layouts/footer.php";
