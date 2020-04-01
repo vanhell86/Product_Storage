@@ -36,10 +36,11 @@ class DvdsController
             $_SESSION['msgClass'] = 'warning';
             $_SESSION['msg'] = $validator->getErrors();
             return redirect($_SERVER['HTTP_REFERER']);// Not the safest way of redirecting back
-//            return redirect('/products/add');
         }
 
-        $data = database()->insert('products', [
+        ProductsController::checkExistance($sku);
+
+        database()->insert('products', [
             'sku' => $sku,
             'name' => $name,
             'type' => $type,

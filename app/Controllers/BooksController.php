@@ -35,6 +35,8 @@ class BooksController
             return redirect($_SERVER['HTTP_REFERER']);// Not the safest way of redirecting back
         }
 
+        ProductsController::checkExistance($sku);
+
         $data = database()->insert('products', [
             'sku' => $sku,
             'name' => $name,
