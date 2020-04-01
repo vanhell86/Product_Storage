@@ -3,7 +3,6 @@
 
 namespace App\Controllers;
 
-
 use Core\FormValidator;
 
 class FurnituresController
@@ -42,7 +41,9 @@ class FurnituresController
             return redirect($_SERVER['HTTP_REFERER']);
         }
 
-        ProductsController::checkExistance($sku);
+        if (checkExistance($sku)) {
+            return redirect($_SERVER['HTTP_REFERER']);
+        }
 
         database()->insert('products', [
             'sku' => $sku,

@@ -37,3 +37,17 @@ function database()
 }
 
 
+function checkExistance(string $sku): bool
+{
+    $data = database()->select('products', '*', [
+        'sku' => $sku
+    ]);
+
+    if ($data) {
+        $_SESSION['msgClass'] = 'warning';
+        $_SESSION['msg'] = 'There already exist product with such SKU, please change it.';
+        return true;
+    }
+    return false;
+}
+

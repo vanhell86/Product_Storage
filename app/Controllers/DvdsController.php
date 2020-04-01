@@ -35,10 +35,12 @@ class DvdsController
         if ($validator->failed()) {
             $_SESSION['msgClass'] = 'warning';
             $_SESSION['msg'] = $validator->getErrors();
-            return redirect($_SERVER['HTTP_REFERER']);// Not the safest way of redirecting back
+            return redirect($_SERVER['HTTP_REFERER']);
         }
 
-        ProductsController::checkExistance($sku);
+        if (checkExistance($sku)) {
+            return redirect($_SERVER['HTTP_REFERER']);
+        }
 
         database()->insert('products', [
             'sku' => $sku,

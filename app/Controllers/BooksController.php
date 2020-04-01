@@ -32,10 +32,12 @@ class BooksController
         if ($validator->failed()) {
             $_SESSION['msgClass'] = 'warning';
             $_SESSION['msg'] = $validator->getErrors();
-            return redirect($_SERVER['HTTP_REFERER']);// Not the safest way of redirecting back
+            return redirect($_SERVER['HTTP_REFERER']);
         }
 
-        ProductsController::checkExistance($sku);
+        if (checkExistance($sku)) {
+            return redirect($_SERVER['HTTP_REFERER']);
+        }
 
         $data = database()->insert('products', [
             'sku' => $sku,

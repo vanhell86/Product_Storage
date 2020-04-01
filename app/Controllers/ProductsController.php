@@ -58,17 +58,4 @@ class ProductsController
         }
         return redirect('/products/list');
     }
-
-    public function checkExistance(string $sku)
-    {
-        $data = database()->select('products', '*',[
-            'sku' => $sku
-        ]);
-
-        if($data) {
-            $_SESSION['msgClass'] = 'warning';
-            $_SESSION['msg'] = 'There already exist product with such SKU, please change it';
-            return redirect($_SERVER['HTTP_REFERER']);
-        }
-    }
 }
